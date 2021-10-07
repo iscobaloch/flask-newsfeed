@@ -1,9 +1,8 @@
 # NEWS FEED (FLASK MINI PROJECT)
 
-This project is based on laravel framework.
+This project is based on Flask framework.
 
-Admin has all privilege where as employee has certain restriction to access.By default You can register as an employee:
-
+Admin has all privilege where as moderator has certain restriction to access.
 
 ## You can engage in this project to make this more advanced and you can add new features.You contribution will be highly appreciated !!
 
@@ -51,7 +50,6 @@ $ source newsfeed.sql
 ```
 
 # Login credentials
-Admin Account: ['email' => 'ganeshkhadka46@gmail.com', 'password' => 'admin123'] <br>
-Employee Account: ['email' => 'employee1@gmail.com', 'password' => 'employee123'] 
+Admin Account: ['username' => 'admin', 'admin' => 'admin123'] <br>
 
 
