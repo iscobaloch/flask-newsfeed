@@ -31,25 +31,29 @@ Admin has all privilege where as employee has certain restriction to access.By d
 
 
 
-
 ## Installation
-This project is for employee management.Employee can register himself and employee can assign a salary for employee...
+This project is for employee management.Employee can register himself and employee can assign a salary for employee.
+
+- Install requirements
+```
+$ pip install -r requirements.txt
+```
+- Import Database
+```
+$ source newsfeed.sql
+```
 
 ## Clone the repo
-git clone https://github.com/GaneshKhadka/Employee-management-system-in-laravel.git
 
-## Composer install
-cd Employee-management-system-in-laravel
-composer install
+```
+$ git clone https://github.com/iscobaloch/flask-newsfeed.git
+```
 
 # Database
-Ajust the database information, then:
 
-php artisan migrate
-
-# Seed the database:
-
-php artisan db:seed
+```
+$ source newsfeed.sql
+```
 
 # Login credentials
 Admin Account: ['email' => 'ganeshkhadka46@gmail.com', 'password' => 'admin123'] <br>
