@@ -30,7 +30,7 @@ Admin has all privilege where as moderator has certain restriction to access.
 
 
 ## Installation
-This project is for employee management.Employee can register himself and employee can assign a salary for employee.
+This project is for News Portal.
 
 - Install requirements
 ```
