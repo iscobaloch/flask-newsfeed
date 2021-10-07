@@ -1,26 +1,35 @@
 # NEWS FEED (FLASK MINI PROJECT)
+
 This project is based on laravel framework.
+
 Admin has all privilege where as employee has certain restriction to access.By default You can register as an employee:
-http://127.0.0.1:8000/register
+
 
 ## You can engage in this project to make this more advanced and you can add new features.You contribution will be highly appreciated !!
 
 ## Screenshots
 # Login page
-![login page](https://user-images.githubusercontent.com/91981782/136429864-94171204-a2ca-4e09-b85f-61c926460b9c.png)
+![login page](https://user-images.githubusercontent.com/91981782/136432665-09c09347-bab8-469f-8ce6-c6bdd9e67771.png)
+
+# Admin Dashboard
+![admin dashboard](https://user-images.githubusercontent.com/91981782/136433204-9176ade5-150c-4462-91de-5d914775b35c.png)
+
+# Manage Posts
+![posts management](https://user-images.githubusercontent.com/91981782/136433635-a7bb29b2-c276-402e-bc43-0a0305572796.png)
+
+# Moderator Dashboard
+![moderator dashboard](https://user-images.githubusercontent.com/91981782/136433265-d10bc0f2-7b44-4042-aa12-62c545676f68.png)
+
+# New News Update
+![News Publish page](https://user-images.githubusercontent.com/91981782/136433776-722272c7-2a2f-4e6d-a1db-c91a49a92290.png)
+
+# Home Page
+![newsfeed home page](https://user-images.githubusercontent.com/91981782/136433334-5771f4d9-3cfe-4fcd-ad6e-0e9c99707c14.png)
+
+# Category Wise News
+![category news search](https://user-images.githubusercontent.com/91981782/136433484-00362422-ad53-4ffb-a8dc-c2799e8197df.png)
 
 
-# User management
-![user management screenshot](https://user-images.githubusercontent.com/15700384/56889471-1e72f600-6a96-11e9-9591-89faf0f20715.png)
-
-# Salary management
-![salary management](https://user-images.githubusercontent.com/15700384/56889637-a1944c00-6a96-11e9-9fef-efec4e27dc40.png)
-
-# Leave management
-![leave management](https://user-images.githubusercontent.com/15700384/56889755-ffc12f00-6a96-11e9-9886-571bbfa7b3e8.png)
-
-# Event management
-![event management](https://user-images.githubusercontent.com/15700384/56889858-634b5c80-6a97-11e9-9bd5-322a547f58cc.png)
 
 
 ## Installation
