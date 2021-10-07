@@ -1,0 +1,76 @@
+{% extends 'master.html' %}
+ {% block body %}
+<section id="sliderSection">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="slick_slider">
+
+        <!-- adding carousel -->
+        {% for post5 in posts[0:4] %}
+        {% set silder = 'upload/thumbnail/' + post5.pthumbnail %}
+      
+                 <div class="single_iteam"> <a href="/read-post/{{post5.pid}}"> <img src="{{ url_for('static', filename=silder) }}" ></a>
+                  <div class="slider_article">
+                    <h2><a class="slider_tittle" href="/read-post/{{post5.pid}}">{{post5.pheading}}</a></h2>
+                    <p>{{post5.pdescription}}</p>
+                  </div>
+             </div>
+            
+                {% endfor %}
+  <!-- end carousel -->
+      </div>
+    </div>
+        </div>
+</section>
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+           <h2><span> Newsfeed</span></h2>
+                    <!-- Display big news left side -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <ul class="wow fadeInDown">
+                               {% for post in posts[0:2] %}
+                             {% set fname = 'upload/thumbnail/' + post.pthumbnail %}
+                           <li>
+                            <a href="../read-post/{{post.pid}}" > <img alt="" style="height:300px; " class="img-fluid img-responsive" src="{{ url_for('static', filename=fname) }}"> </a>
+                                <div> <a href="../read-post/{{post.pid}}" > <h3>{{post.pheading}}</h3> </a> </div>
+                                <div> <a href="../read-post/{{post.pid}}" >{{post.pdescription}}</a> </div> <br>
+                            </li>
+                               {% endfor %}
+                        </ul>
+                    </div>
+
+                           <!-- adding 5 small news right side -->
+                           <div  class=" d-flex flex-row justify-content-start">
+                         <div class=" col-lg-6 col-md-6 col-sm-12">
+                            <ul class="wow fadeInDown">
+                               {% for post in posts[2:4] %}
+                             {% set fname = 'upload/thumbnail/' + post.pthumbnail %}
+                           <li>
+                            <a href="../read-post/{{post.pid}}" > <img alt="" style="height:300px; " class="img-fluid img-responsive" src="{{ url_for('static', filename=fname) }}"> </a>
+                                <div> <a href="../read-post/{{post.pid}}" > <h3>{{post.pheading}}</h3> </a> </div>
+                                <div> <a href="../read-post/{{post.pid}}" >{{post.pdescription}}</a> </div> <br>
+                            </li>
+                               {% endfor %}
+                        </ul>
+                         </div>
+
+                    </div>
+                    </div>
+
+                      <!-- see more -->
+                   <div style="position: relative;">
+                        <br> <br>
+                        <br> <br>
+                       <a href="{{url_for('all_posts')}}" style="position: absolute; bottom: 20px; right: 16px; color:blue;"><SPAN>SEE MORE</SPAN></a>
+                     </div>
+                    </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

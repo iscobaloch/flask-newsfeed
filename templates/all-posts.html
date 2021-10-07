@@ -1,0 +1,32 @@
+{% extends 'master.html' %}
+ {% block body %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+                <h2><span> All News </span> </h2>
+
+                <!-- adding all news of selected category -->
+
+                <!-- inner card row -->
+             {% for a in posts %}
+                 {% set fname = 'upload/thumbnail/' + a.pthumbnail %}
+               <div class="row">
+                      <div class="card">
+                        <div class="col-lg-4">
+                            <a href="../read-post/{{a.pid}}" > <img  style="height:150px; width:100%; " class="card-img img-fluid img-responsive" src="{{ url_for('static', filename=fname)}}"> </a>
+                        </div>
+                          <div class="card-body">
+                             <div class="card-text"> <a href="../read-post/{{a.pid}}" > <h3> {{a.pheading}} </h3> </a> </div>
+                             <div class="card-text"> <a href="../read-post/{{a.pid}}" >{{a.pdescription}} </a> </div>
+                        </div>
+                    </div>
+               </div>
+              {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

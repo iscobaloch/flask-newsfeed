@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+ {% block body %}
+
+<section id="contentSection">
+    <div class="row">
+        <div class="col-lg3-3 col-md-3 col-sm-12">
+         <div class="left_content">
+          <div class="contact_area">
+              <h2>ABOUT US</h2>                   
+          </div>
+         </div>
+        </div>
+        <div class="col-lg-7 " >  {% for about in about %} <br> <br>
+
+        <p style="justified" align="justified">{{about.about}}<p>
+            {% endfor %}
+            <br>
+
+
+        </div>
+        <!-- row end -->
+    </div>
+</section>
+
+{% endblock %}

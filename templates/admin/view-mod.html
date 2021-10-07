@@ -1,0 +1,61 @@
+    {%extends "admin/admin.html"%}
+   {% block body %}
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+
+                <h3 class="card-title">Manage Posts</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                                {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p>
+
+        {% endfor %}
+        {% if error %}
+        <p style='color:red'> {{error}}</p>
+
+        {% endif %}
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                 <th>#</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    {% for mod in mods%}
+                    <td>{{loop.index}}</td>
+                    <td>{{mod.name}}</td>
+                    <td>{{mod.username}}</td>
+                      <td>{{mod.email}}</td>
+                      <td>**********</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/update-moderator/id={{mod.id}}"><i class="nav-icon fas fa-edit"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="confirm('Are You Sure to Delete the Moderator')" href="/update-moderator/action_delete={{mod.id}}"><i class="nav-icon fas fa-trash"></i></a>
+                 </td>
+                  </tr>
+                  {% endfor%}
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

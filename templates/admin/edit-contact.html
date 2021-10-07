@@ -1,0 +1,65 @@
+{%extends "admin/admin.html"%}
+   {% block body %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="col-md-12">
+      <div class="container-fluid">
+          <!-- left column -->
+        <div class="col-md-10 align-center">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">EDIT CONTACT INFO</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                   <form action="{{url_for('edit_contact')}}" method="post">
+                <div class="card-body">
+                                                           {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p>
+        {% endfor %}
+        {% if error %}
+        <p style='color:red'> {{error}}</p>
+        {% endif %}
+                                        <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" value="{{contact.address}}">
+                  </div>
+                    <div class="form-group">
+                    <label for="contact">Contact No</label>
+                    <input type="text" class="form-control" id="contact" name="contact" value="{{contact.phone}}">
+                  </div>
+                                           <div class="form-group">
+                    <label for="fax">Fax No</label>
+                    <input type="text" class="form-control" id="fax" name="fax" value="{{contact.fax}}">
+                  </div>
+                    <div class="form-group">
+                    <label for="email">Address</label>
+                    <input type="text" class="form-control" id="email" name="email" value="{{contact.email}}">
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1">I confirm all changes</label>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-danger">UPDATE CONTACT INFO</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

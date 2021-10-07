@@ -1,0 +1,59 @@
+    {%extends "mod/mod.html"%}
+   {% block body %}
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+
+                <h3 class="card-title">Manage Posts</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                                {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p>
+
+        {% endfor %}
+        {% if error %}
+        <p style='color:red'> {{error}}</p>
+
+        {% endif %}
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                 <th>#</th>
+        <th>Post Heading</th>
+        <th>Description</th>
+        <th>Details</th>
+        <th>Category</th>
+        <th>Post by</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    {% for post in posts%}
+                    <td>{{loop.index}}</td>
+                    <td>{{post.Tblposts.pheading[0:30]}}</td>
+                    <td>{{post.Tblposts.pdescription[0:30]}}</td>
+                    <td>{{post.Tblposts.pdetails[0:50]}}</td>
+                    <td>{{post.Category.cname.capitalize()}}</td>
+                    <td><button type="button" class="btn btn-primary btn-sm" autofocus>{{post.Tblposts.pubid.capitalize()}}</button>
+                 </td>
+                  </tr>
+                  {% endfor%}
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

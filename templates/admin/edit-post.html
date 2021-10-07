@@ -1,0 +1,72 @@
+    {%extends "admin/admin.html"%}
+   {% block body %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+             <div id="form" class="pt-5 form-input-content">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h2 class="card-title" style="color: SKYBLUE;">
+        UPDATE POST
+              </h2>
+            </div>
+            <!-- /.card-header -->
+                <form method="POST" enctype="multipart/form-data" action="/edit-post/id={{posts.Tblposts.pid}}/action=edit">
+                  <!-- CARD-->
+                    <br>
+                        {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p><button type="button" class="btn btn-block btn-outline-info btn-lg"><a href="{{url_for('manage_posts')}}" class="nav-link">VIEW POSTS</a>
+</button>
+        {% endfor %}
+                <div class="form-group">
+                  <label>SELECT POST CATEGORY</label>
+                  <select name="pcategory" id="pcategory" class="form-control" style="width: 100%;" required >
+                             <option value="{{posts.Tblposts.catid}}">{{posts.Category.cname.capitalize()}}</option>
+                            {% for cat in cat %}
+                    <option value="{{cat.cid}}">{{cat.cname.capitalize()}}</option>
+                        {% endfor %}
+                  </select>
+                </div>
+                      {% set fname = 'upload/thumbnail/' + posts.Tblposts.pthumbnail %}
+                  <!-- CARD END-->
+                                    <div class="form-group">
+                    <label for="pheading">POST HEADING</label>
+                    <input type="text" name="pheading" class="form-control" id="pheading" value="{{posts.Tblposts.pheading}}" required>
+                  </div>
+                      <div class="form-group">
+                    <label for="pdescription">POST DESCRIPTION</label>
+                          <textarea class="form-control" id="pdescription" name="pdescription" required>{{posts.Tblposts.pdescription}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="pthumbnail">CHOOSE THUMBNAIL</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="pthumbnail" name="pthumbnail" accept=".jpg,.png,.jpeg">
+                        <label class="custom-file-label" for="pthumbnail">Choose Thumbnail</label>
+                      </div>
+
+                    </div>
+                      <br>
+                          <p style="color: GREEN;">Current Image:<br><img src="{{ url_for('static', filename=fname)}}" class="img-fluid" height="150" width="200"></p>
+                  </div>
+                <!--CARD END-->
+            <div class="form-group">
+                <label>ENTER POST DETAIL:</label>
+              <textarea id="summernote" name="summernote" required>{{posts.Tblposts.pdetails}}</textarea>
+          <div class="form-check">
+                    &nbsp;&nbsp; &nbsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1" style="color: yellow;">Confirm all Changes</label>
+                  </div>
+                <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-block" VALUE="UPDATE NOW">
+
+          </div>
+      </div>
+      <!-- ./row -->
+
+      <!-- ./row -->
+    </section>
+    <!-- /.content -->
+  </div>
+ {%endblock%}

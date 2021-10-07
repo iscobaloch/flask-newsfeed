@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+ {% block body %}
+
+             {% set fname = 'upload/thumbnail/' + result.Tblposts.pthumbnail %}
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <h1>{{result.Tblposts.pheading}}</h1>
+            <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>{{result.Tblposts.pubid.capitalize()}}</a> <span><i class="fa fa-calendar"></i>{{result.Tblposts.ptime}}</span> <a href="#"><i class="fa fa-tags"></i>{{result.Category.cname.capitalize()}}</a> </div>
+            <div class="single_page_content">
+                <img class="img-center" style="width:85%; height:300px" src="{{ url_for('static', filename=fname) }}" alt="">
+              <div class>
+                  <blockquote> {{result.Tblposts.pdetails}} </blockquote>
+
+             </div>
+             </div>
+            <div class="social_link">
+              <ul class="sociallink_nav">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              </ul>
+            </div>
+            <div class="related_post">
+              <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+              <ul class="spost_nav wow fadeInDown animated">
+           {% for randoms in random[0:3] %}
+                    {% set fname = 'upload/thumbnail/' + randoms.pthumbnail %}
+                <li>
+                  <div class="media"> <a class="media-left" href="../read-post/{{randoms.pid}}"> <img src="{{ url_for('static', filename=fname) }}" > </a>
+                    <div class="media-body"> <a class="catg_title" href="../read-post/{{randoms.pid}}"> {{randoms.pheading}} </a> </div>
+                  </div>
+                </li>
+ {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{{url_for('static', filename='assets/css/login.css')}}">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body class="main-bg">
+        <div class="login-container text-c animated flipInX">
+                <div>
+                    <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+                </div>
+                    <h3 class="text-whitesmoke">ADMIN LOGIN PAGE</h3>
+                    <p class="text-whitesmoke">Sign In Using your Credentials</p>
+                <div class="container-content">
+                        {% for message in get_flashed_messages()%}
+        <p style='color:skyblue'>{{message}}</p>
+
+        {% endfor %}
+        {% if error %}
+        <p style='color:blue'> {{error}}</p>
+
+        {% endif %}
+                    <form method="POST" action="{{url_for('login')}}" class="margin-t">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control"  name="password" id="password" placeholder="*****" required="">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control"  name="role" id="role"  required="">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="mode">Moderator</option>
+
+                            </select>
+                        </div>
+                        <button type="submit" class="form-button button-l margin-b">Sign In</button>
+
+                        <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a>
+
+                    </form>
+                    <p class="margin-t text-whitesmoke"><small> NEWS PORTAL &copy; 2021</small> </p>
+                </div>
+            </div>
+</body>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+</body>
+</html>

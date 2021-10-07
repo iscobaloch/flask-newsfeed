@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+ {% block body %}
+
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+              {% for cats in  posts_cat%}
+              {% if cats.cname ==cat %}
+              <h2><span>{{cats.cname}}</span> </h2>
+              {% endif %}
+               {% endfor %}
+
+                <!-- adding all news of selected category -->
+
+                <!-- inner card row -->
+
+                <!-- Business-->
+                {% for b in readcat %}
+          {% set fname = 'upload/thumbnail/' + b.Tblposts.pthumbnail %}
+               <div class="row">
+                      <div class="card">
+                        <div class="col-lg-4">
+                            <a href="../read-post/{{b.Tblposts.pid}}" > <img  style="height:150px; width:100%; " class="card-img img-fluid img-responsive" src="{{ url_for('static', filename=fname) }}"> </a>
+                        </div>
+                          <div class="card-body">
+                             <div class="card-text"> <a href="../read-post/{{b.Tblposts.pid}}" > <h3>{{b.Tblposts.pheading}}</h3> </a> </div>
+                             <div class="card-text"> <a href="../read-post/{{b.Tblposts.pid}}" >{{b.Tblposts.pdescription}}</a> </div>
+                        </div>
+                    </div>
+               </div>
+             {% endfor %}
+
+
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

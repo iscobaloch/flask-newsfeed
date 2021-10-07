@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+ {% block body %}
+
+<section id="contentSection">
+    <div class="row">
+
+        <div class="col-12">
+         <div class="left_content">
+          <div class="contact_area">
+            <h2> Visit us anytime </h2>
+
+                    {% for touch in contact %}
+            <iframe src="https://www.google.com/maps?q={{touch.address}}&output=embed" style="border:3; height:400px; width:100%;" allowfullscreen="" loading="lazy"></iframe>
+           </div>
+        </div>
+        </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="left_content">
+          <div class="contact_area">
+            <h2>Contact Us</h2>
+            <h4 class="text-center">We're open for any suggestion or just to have a chat</h4>
+            <form action="#" class="contact_form">
+              <input class="form-control" type="text" placeholder="Name*">
+              <input class="form-control" type="email" placeholder="Email*">
+              <textarea class="form-control" cols="30" style="resize: none;" rows="10" placeholder="Message*"></textarea>
+              <input type="submit" value="Send Message">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="right_content" style=" position: relative;">
+            <div class="contact_area" style="font-size:20px;" >
+              <h2>Get In Touch</h2>
+
+              <p ><i style="font-size:29px;" class="fa fa-map-marker" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+                Address: <span style="text-align: justify; width: 100px;">{{touch.address}} </span>
+               </p>
+
+              <p><i style="font-size:29px;" class="fa fa-phone" aria-hidden="true"></i> 
+                &nbsp;&nbsp; Phone: <a href="tel:{{touch.phone}}">{{touch.phone}}</a> </p>
+
+                
+                <p ><i style="font-size:29px;" class="fa fa-location-arrow fa-10x" aria-hidden="true"></i>
+                &nbsp; &nbsp; Email: <a href = "mailto:{{touch.email}}"> {{touch.email}} </a></p>
+                
+                <p><i class="fa fa-fax" aria-hidden="true"></i>
+                &nbsp;&nbsp; Fax: <a href="fax:<?php echo $fax; ?>">{{touch.fax}} </a>
+              </p>
+                {%endfor%}
+            </div>
+          </div>
+      </div>
+      <!-- closing row -->
+{% endblock %}

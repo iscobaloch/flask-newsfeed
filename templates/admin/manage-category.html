@@ -1,0 +1,59 @@
+    {%extends "admin/admin.html"%}
+   {% block body %}
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+
+                           <h4 class="text-center pb-3">Manage Post Categories</h4>
+                                {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p>
+
+        {% endfor %}
+        {% if error %}
+        <p style='color:red'> {{error}}</p>
+
+        {% endif %}
+                  <thead>
+                  <tr>
+                 <th>S.No.</th>
+                <th>Category Name</th>
+                  <th>Total Posts</th>
+               <th>Action</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    {% for cat in cats%}
+
+                    <td>{{loop.index}}</td>
+                    <td>{{cat.cname.capitalize()}}</td>
+
+                    <td>10</td>
+
+                    <td align="right">
+                        <a class="btn btn-primary btn-lr" href="/edit-category/action_id={{cat.cid}}"><i class="nav-icon fas fa-edit"></i></a>
+                        <a class="btn btn-danger btn-lr" href="/manage-category/action_delete={{cat.cid}}"><i class="nav-icon fas fa-trash"></i></a></td>
+                  </tr>
+
+                  {% endfor%}
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

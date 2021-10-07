@@ -1,0 +1,53 @@
+{%extends "admin/admin.html"%}
+   {% block body %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="col-md-12">
+      <div class="container-fluid">
+          <!-- left column -->
+        <div class="col-md-10 align-center">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">ADD NEW CATEGORY</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                   <form action="{{url_for('add_category')}}" method="post">
+                <div class="card-body">
+                  <div class="form-group">
+                                                           {% for message in get_flashed_messages()%}
+        <p style='color:green'>{{message}}</p>
+        {% endfor %}
+        {% if error %}
+        <p style='color:red'> {{error}}</p>
+        {% endif %}
+                    <label for="cname">Add a New Catergory</label>
+                    <input type="text" class="form-control" id="cname" name="cname" placeholder="Add Category">
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1">Confirm</label>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Add Category</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

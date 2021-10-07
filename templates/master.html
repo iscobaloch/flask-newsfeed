@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NewsFeed - Mini Project </title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/font.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/li-scroller.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/slick.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/jquery.fancybox.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/theme.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/style.css')}}">
+</head>
+<body>
+  <div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="container">
+  <header id="header">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+          <div class="header_top_left">
+            <ul class="top_nav ">
+              <li {% if request.path == '/' %}class="active"{% endif %}><a href="{{url_for('home')}}">Home</a></li>
+              <li><a href="./about-us">About us</a></li>
+              <li><a href="./contact-us">Contact Us</a></li>
+                {% if session.get('admin')%}
+              <li><a href="{{url_for('admin')}}">Dashboard</a></li>
+                {%else%}
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                {%endif%}
+            </ul>
+          </div>
+          <div class="header_top_right">
+            <p> <?php echo date("l, F d, Y" , strtotime("now") ); ?> </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-auto">
+        <div class="header_bottom ">
+          <a href="{{url_for('home')}}" class="logo"><img src="{{url_for('static', filename='upload/dp/logo.svg')}}" alt="">&nbsp;&nbsp;<span style="font-size: 120%">NEWS FEED</span> </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section id="navArea">
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav main_nav">
+          <li {% if request.path == '/' %}class="active"{% endif %}><a href="{{url_for('home')}}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+         <li {% if request.path == '/all-posts' %}class="active"{% endif %}> <a href="{{url_for('all_posts')}}">All</a>  </li>
+         <!-- category------------------------------------------------------------------------- -->
+                    {% for cat in posts_cat%}
+
+            <li {% if request.path =='/read-category/'+cat.cname%} class="active" {% endif %}><a href="/read-category/{{cat.cname}}">{{cat.cname}}</a></li>
+                    {% endfor %}
+        </ul>
+
+      </div>
+    </nav>
+  </section>
+
+  <section id="newsSection">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="latest_newsarea"> <span>Latest News</span>
+
+          <ul id="ticker01" class="news_sticker">
+          <!-- latest news------------------------------------------------------------ -->
+            <!-- Slide Upper posts -->
+    {% for post_desc5 in posts[0:6] %}
+        {% set fname = 'upload/thumbnail/' + post_desc5.pthumbnail %}
+               <li><a href='/read-post/{{post_desc5.pid}}'><img  src="{{ url_for('static', filename=fname)}}"> {{post_desc5.pheading}}</a></li>
+               {% endfor %}
+        <div>
+      </div>
+    </div>
+  </section>
+
+
+ {% block body %} {% endblock %}
+
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="latest_post">
+          <h2><span>Polular post</span></h2>
+          <div class="latest_post_container" style="height:500p; overflow: auto;">
+
+            <ul class="latest_postnav" >
+
+            <!-- ADDING POPULAR NEWS---------------------------------------------------------------------- -->
+            <?php
+
+
+                <li>
+                {% for posts_ran in random[0:9] %}
+        {% set fname = 'upload/thumbnail/' + posts_ran.pthumbnail %}
+                <div class="media"> <a href="/read-post/{{posts_ran.pid}}" class="media-left"> <img alt="" src="{{ url_for('static', filename=fname) }}"> </a>
+                  <div class="media-body"> <a href="/read-post/{{posts_ran.pid}}" class="catg_title"> {{posts_ran.pheading}}</a> </div>
+
+                </div>
+              </li>
+            </ul>
+                   {% endfor %}
+          </div>
+        </div>
+
+        <aside class="right_content">
+        <div class="latest_post">
+            <h2><span>Latest Post</span></h2>
+            <div class="latest_post_container" style="height:500p; overflow: auto;">
+            <ul class="post_nav pt-4"  >
+
+            <!-- ADDING LATEST NEWS --------------------------------------------------------------->
+                    {% for post in posts[0:9] %}
+                     {% set fname = 'upload/thumbnail/' + post.pthumbnail %}
+                    <li>
+                    <div class="media"> <a href="/read-post/{{post.pid}}" class="media-left"> <img alt="" src="{{ url_for('static', filename=fname) }}"> </a>
+                      <div class="media-body"> <a href="/read-post/{{post.pid}}" class="catg_title"> {{post.pheading}}</a> </div>
+                    </div>
+                  </li>
+                    {% endfor %}
+            </ul>
+          </div>
+          </div>
+          <div class="single_sidebar">
+          <div class="latest_post">
+            <h2><span>category</span></h2>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="category">
+                <ul>
+                <li class="cat-item">  <a href="../all-posts">All</a>  </li>
+                <!-- adding category----------------------------------------------------------------- -->
+                    {% for cat in posts_cat%}
+                <li class="cat-item" ><a href="../read-category/{{cat.cname}}">{{cat.cname.capitalize()}}</a>
+
+                </li>
+       {% endfor %}
+
+                <!-- end of adding category---------------------------------------------------------  -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Links</span></h2>
+            <ul>
+            <!-- <li><a href="#">Log-in / Sign-Up</a></li> -->
+            <li><a href="./about-us">About us</a></li>
+              <li><a href="./contact-us">Contact Us</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer_top">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="footer_widget wow fadeInDown">
+            <h2>Important Links</h2>
+            {% for cat in posts_cat%}
+            <ul class="tag_nav">
+                 <li><a href="../read-category/{{cat.cname}}">{{cat.cname.capitalize()}}</a></li>
+ {% endfor %}
+                <!-- end of adding category---------------------------------------------------------  -->
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="footer_widget wow fadeInRightBig">
+
+<!--Contact info -->
+            <h2>Contact</h2>
+            <p>Contact Us any time. We're open for any suggestion or just to have a chat.</p>
+            <address>
+            {% for ct in contact %}
+              <P> Address : {{ct.address}}</P>
+              <P>  Phone: <a  style="color:rgb(218,218,218);" href="{{ct.phn}}">{{ct.phn}}</a></P>
+              <p>Email : <a style="color:rgb(218,218,218);" href = "mailto:{{ct.email}}"> {{ct.email}} </a> </p>
+              <p>Fax : <a style="color:rgb(218,218,218);" href="fax:{{ct.fax}}"> {{ct.fax}} </a> </p>
+           {% endfor %}
+            </address>
+
+            <?php
+              }
+            }
+            ?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p class="copyright">Copyright &copy; <?php echo date("Y" , strtotime("now") ); ?> <a href="{{url_for('home')}}">NewsFeed</a></p>
+      <p class="developer" style="color:white;">Developed By UOBIANS</p>
+      <!-- Wpfreeware -->
+    </div>
+  </footer>
+</div>
+<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/wow.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/slick.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.li-scroller.1.0.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.newsTicker.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/custom.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/moment.min.js')}}"></script>
+
+</body>
+</html>
