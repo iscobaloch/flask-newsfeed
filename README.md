@@ -38,13 +38,8 @@ This project is for employee management.Employee can register himself and employ
 ```
 $ pip install -r requirements.txt
 ```
-- Import Database
-```
-$ source newsfeed.sql
-```
 
-## Clone the repo
-
+## Clone the repository
 ```
 $ git clone https://github.com/iscobaloch/flask-newsfeed.git
 ```
