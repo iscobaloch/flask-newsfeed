@@ -7,7 +7,8 @@ http://127.0.0.1:8000/register
 
 ## Screenshots
 # Login page
-![login page](https://user-images.githubusercontent.com/15700384/56889193-7b21e100-6a95-11e9-8e5a-144050628106.png)
+![login page](https://user-images.githubusercontent.com/91981782/136429864-94171204-a2ca-4e09-b85f-61c926460b9c.png)
+
 
 # User management
 ![user management screenshot](https://user-images.githubusercontent.com/15700384/56889471-1e72f600-6a96-11e9-9591-89faf0f20715.png)
