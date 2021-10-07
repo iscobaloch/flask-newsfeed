@@ -29,7 +29,6 @@ Admin has all privilege where as moderator has certain restriction to access.
 ![category news search](https://user-images.githubusercontent.com/91981782/136433484-00362422-ad53-4ffb-a8dc-c2799e8197df.png)
 
 
-
 ## Installation
 This project is for employee management.Employee can register himself and employee can assign a salary for employee.
 
@@ -50,6 +49,7 @@ $ source newsfeed.sql
 ```
 
 # Login credentials
-Admin Account: ['username' => 'admin', 'admin' => 'admin123'] <br>
+- *admin login: admin*
+- *password: admin*
 
 
