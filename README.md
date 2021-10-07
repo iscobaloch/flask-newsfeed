@@ -49,7 +49,7 @@ $ source newsfeed.sql
 ```
 
 # Login credentials
-- *admin login: admin*
-- *password: admin*
+- *Admin login: admin*
+- *Password: admin*
 
 
