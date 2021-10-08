@@ -16,13 +16,10 @@ class TblAbout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     about = db.Column(db.String(100), nullable=False)
 
-
-
 class Category(db.Model):
     __tablename__= 'category'
     cid = db.Column(db.Integer, primary_key=True)
     cname = db.Column(db.String(80), nullable=False)
-
 
 class Tblposts(db.Model):
     __tablename__ = 'posts'
@@ -48,5 +45,5 @@ class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     username = db.Column(db.String(100), nullable=False)
-    password = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.String(300), nullable=False)
     email = db.Column(db.String(200), nullable=False)

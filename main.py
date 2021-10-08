@@ -2,6 +2,7 @@ from flask import Flask, flash, render_template, request, session, redirect, url
 from werkzeug.utils import secure_filename
 from sqlalchemy.sql.expression import func, select
 import os
+from passlib.hash import pbkdf2_sha256
 from jinja2 import Markup
 from datetime import datetime
 import secrets
@@ -18,7 +19,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize 
 db.init_app(app)
-
 
 
 def save_images(photo):
@@ -164,7 +164,8 @@ def new_moderator():
             name= request.form.get('name')
             username = request.form.get('username').lower().replace(" ","")
             email = request.form.get('email')
-            password = request.form.get('password')
+            passw = request.form.get('password')
+            password = pbkdf2_sha256.hash(passw)
             cur= User.query.filter_by(username=username).first()
             if cur is None:
                 mod= User(name=name,username=username,email=email,password=password)
@@ -192,7 +193,8 @@ def update_moderator(id):
                 name= request.form.get('name')
                 username = request.form.get('username').lower().replace(" ","")
                 email = request.form.get('email')
-                password = request.form.get('password')
+                passw = request.form.get('password')
+                password=pbkdf2_sha256.hash(passw)
                 mod= db.session.query(User).filter(User.id==id).first()
                 mod.name=name
                 mod.username=username
@@ -410,8 +412,7 @@ def delete_category(id):
             error ="NO RECORD FOUND"
             return render_template("admin/manage-category.html", cats=cats, error=error )
         else:
-            record=  db.session.query(Category).filter(Category.cid
-                                                       == id).first()
+            record=  db.session.query(Category).filter(Category.cid==id).first()
             db.session.delete(record)
             db.session.commit()
             flash('Category Has been Deleted Successfully')
@@ -420,6 +421,7 @@ def delete_category(id):
         flash('LOGIN FIRST TO PROCEED')
         return render_template("admin/login.html")
 
+
 @app.route("/login" , methods=['POST','GET'])
 def login():
     if request.method == "POST":
@@ -427,8 +429,8 @@ def login():
         password = request.form.get("password")
         role= request.form.get('role').replace(" ","")
         if role=='admin':
-            adm = Admin.query.filter_by(username=username, password=password).first()
-            if adm:
+            adm = Admin.query.filter_by(username=username).first()
+            if pbkdf2_sha256.verify(password, adm.password):
                 session['admin'] = adm.username
                 session['id']= adm.id
                 return redirect(url_for('admin'))
@@ -436,8 +438,8 @@ def login():
                 error='Invalid Username or Password'
                 return render_template("admin/login.html", error=error)
         else:
-            mod= User.query.filter_by(username=username, password=password).first()
-            if mod:
+            mod= User.query.filter_by(username=username).first()
+            if pbkdf2_sha256.verify(password, mod.password):
                 session['mod'] = mod.username
                 session['id'] = mod.id
                 return redirect(url_for('admin'))
@@ -446,6 +448,10 @@ def login():
                 return render_template("admin/login.html", error=error)
     else:
         return render_template("admin/login.html")
+
+
+
+
 
 @app.route("/about-us")
 def about():
