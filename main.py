@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from sqlalchemy.sql.expression import func, select
 import os
 from passlib.hash import pbkdf2_sha256
+import hashlib
 from jinja2 import Markup
 from datetime import datetime
 import secrets
@@ -448,9 +449,6 @@ def login():
                 return render_template("admin/login.html", error=error)
     else:
         return render_template("admin/login.html")
-
-
-
 
 
 @app.route("/about-us")
