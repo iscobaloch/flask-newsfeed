@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-7 " >  {% for about in about %} <br> <br>
 
-        <p style="justified" align="justified">{{about.about}}<p>
+        <p style="justified" align="justified">{{about.about |safe}}<p>
             {% endfor %}
             <br>
 

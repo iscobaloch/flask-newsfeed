@@ -12,7 +12,7 @@
             <div class="single_page_content">
                 <img class="img-center" style="width:85%; height:300px" src="{{ url_for('static', filename=fname) }}" alt="">
               <div class>
-                  <blockquote> {{result.Tblposts.pdetails}} </blockquote>
+                  <blockquote> {{result.Tblposts.pdetails |safe}} </blockquote>
 
              </div>
              </div>

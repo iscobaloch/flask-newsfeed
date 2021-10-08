@@ -20,7 +20,7 @@
   <div id="status">&nbsp;</div>
 </div>
 <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
-<div class="container">
+<div class="container-fluid">
   <header id="header">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -109,7 +109,7 @@
             <address>
             {% for ct in contact %}
               <P> Address : {{ct.address}}</P>
-              <P>  Phone: <a  style="color:rgb(218,218,218);" href="{{ct.phn}}">{{ct.phn}}</a></P>
+              <P>  Phone: <a  style="color:rgb(218,218,218);" href="{{ct.phn}}">{{ct.phone}}</a></P>
               <p>Email : <a style="color:rgb(218,218,218);" href = "mailto:{{ct.email}}"> {{ct.email}} </a> </p>
               <p>Fax : <a style="color:rgb(218,218,218);" href="fax:{{ct.fax}}"> {{ct.fax}} </a> </p>
            {% endfor %}
