@@ -3,8 +3,6 @@ from werkzeug.utils import secure_filename
 from sqlalchemy.sql.expression import func, select
 import os
 from passlib.hash import pbkdf2_sha256
-import hashlib
-from jinja2 import Markup
 from datetime import datetime
 import secrets
 from models import *
@@ -20,7 +18,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize 
 db.init_app(app)
-
 
 def save_images(photo):
     hash_photo= secrets.token_urlsafe(20)
@@ -42,11 +39,6 @@ def all_posts():
     count= Category.query.count()
     # Fetch all category
     posts_cat = Category.query.all()
-
-    # c = db.session.query(Business, Category)\
-    # .filter(Business.id == Category.cid
-    # ).all()
-    # print(c)
     return render_template('all-posts.html',posts =posts , random=random, contact=contact, count=count,posts_cat=posts_cat)
 
 

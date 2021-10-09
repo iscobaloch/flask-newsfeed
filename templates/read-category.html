@@ -1,4 +1,7 @@
 {% extends 'master.html' %}
+
+{% block title%}{{cat.upper()}} UPDATES - NEWSFEED{% endblock %}
+
  {% block body %}
 
 <section id="contentSection">
@@ -11,8 +14,6 @@
               <h2><span>{{cats.cname}}</span> </h2>
               {% endif %}
                {% endfor %}
-
-                <!-- adding all news of selected category -->
 
                 <!-- inner card row -->
 
