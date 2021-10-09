@@ -112,6 +112,44 @@ def admin():
         flash('LOGIN FIRST TO ACCESS DASHBOARD')
         return redirect(url_for('login'))
 
+@app.route("/change-password", methods=['POST','GET'])
+def change_password():
+    if session.get('admin'):
+        if request.method=='POST':
+            oldpass=request.form.get('oldpass')
+            password = pbkdf2_sha256.hash(request.form.get('password'))
+            adm = Admin.query.filter_by(username=session.get('admin')).first()
+            if pbkdf2_sha256.verify(oldpass, adm.password):
+                upt = db.session.query(Admin).filter_by(username=session.get('admin')).first()
+                upt.password = password
+                db.session.commit()
+                flash('PASSWORD UPDATED SUCCESSFULLY')
+                return render_template("admin/change-password.html")
+            else:
+                error='YOUR OLD PASSWORD WAS INCORRECT'
+                return render_template("admin/change-password.html", error=error)
+        else:
+            return render_template("admin/change-password.html")
+    elif session.get('mod'):
+        if request.method=='POST':
+            oldpass=request.form.get('oldpass')
+            password = pbkdf2_sha256.hash(request.form.get('password'))
+            mod = User.query.filter_by(username=session.get('mod')).first()
+            if pbkdf2_sha256.verify(oldpass, mod.password):
+                upt = db.session.query(User).filter_by(username=session.get('mod')).first()
+                upt.password = password
+                db.session.commit()
+                flash('PASSWORD UPDATED SUCCESSFULLY')
+                return render_template("mod/change-password.html")
+            else:
+                error='YOUR OLD PASSWORD WAS INCORRECT'
+                return render_template("mod/change-password.html", error=error)
+        else:
+            return render_template("mod/change-password.html")
+    else:
+        flash('LOGIN FIRST TO ACCESS DASHBOARD')
+        return redirect(url_for('login'))
+
 
 
 @app.route("/add-post", methods=['POST','GET'])

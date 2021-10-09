@@ -96,7 +96,7 @@
         </div>
         <div class="info">
           Welcome! <strong>{{session['mod'].capitalize()}} </strong><br>
- <a class="btn btn-primary btn-sm" href="#"><i class="nav-icon fas fa-edit"></i> Update Profile</a><br>
+ <a class="btn btn-primary btn-sm" href="{{url_for('change_password')}}"><i class="nav-icon fas fa-edit"></i>Change Password</a><br>
                         <a class="btn btn-danger btn-sm" href="{{url_for('logout')}}"><i class="nav-icon fas fa-share"> Log out    </i></a>
         </div>
       </div>
@@ -270,6 +270,21 @@ $(function () {
     });
   });
 </script>
+  <script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
 
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Both Passwords Must Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+  </script>
 </body>
 </html>
