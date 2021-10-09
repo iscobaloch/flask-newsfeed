@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO admin (id, `name`, username, email, `password`) VALUES
-(2, 'Administrator', 'admin', 'admin1@gmail.com', '$pbkdf2-sha256$29000$RghhrJWSknLuPWcsZaxVKg$iclKG/LWMkkSQpge1lY41LlMpfxC5y/X9dHfOvkE1RM');
+(2, 'Administrator', 'admin', 'admin@gmail.com', '$pbkdf2-sha256$29000$RghhrJWSknLuPWcsZaxVKg$iclKG/LWMkkSQpge1lY41LlMpfxC5y/X9dHfOvkE1RM');
 
 -- --------------------------------------------------------
 
