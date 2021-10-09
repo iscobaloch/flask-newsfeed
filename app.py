@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 db = SQLAlchemy()
 app.config['WTF_CSRF_SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
-app.config["SQLALCHEMY_DATABASE_URI"]="postgres://ekhzkhdluumvfs:f15595957a5022f19f7847e1e21799beb3156294eebd7c9c24b1ee42645979b2@ec2-54-204-148-110.compute-1.amazonaws.com:5432/dfl0eqjd8p8la5"
+app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://admin:12345678@localhost:3306/newsfeed"
 app.config['SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
 app.config['UPLOAD_FOLDER'] = '/home/wali/PycharmProjects/newsfeed/static/upload/thumbnail/'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
