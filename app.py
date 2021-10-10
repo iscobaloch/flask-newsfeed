@@ -1,9 +1,6 @@
 from flask import Flask, flash, render_template, request, session, redirect, url_for, current_app
 from werkzeug.utils import secure_filename
 from sqlalchemy.sql.expression import func, select
-from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 import os
 from passlib.hash import pbkdf2_sha256
 from datetime import datetime
@@ -11,26 +8,16 @@ import secrets
 from models import *
 
 app = Flask(__name__)
-engine = create_engine('mysql+pymysql://dbuser:yourdbpass@serverusername.mysql.pythonanywhere-services.com:3306/newsfeed$newsfeed')
-db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
-
-Base = declarative_base()
-Base.query = db_session.query_property()
-
 
 db = SQLAlchemy()
 app.config['WTF_CSRF_SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
-app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://newsfeed:qwerty12345@newsfeed.mysql.pythonanywhere-services.com:3306/newsfeed$newsfeed"
-app.config['SQLALCHEMY_POOL_RECYCLE'] = 280
+app.config["SQLALCHEMY_DATABASE_URI"]="postgres://sxlbimfcblaxsg:933392f77dee46ead42e658021f71f55548b3094bf9199a1e8d4a4163eb96936@ec2-3-209-65-193.compute-1.amazonaws.com:5432/d5altodeq2cn5f"
 app.config['SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
 app.config['UPLOAD_FOLDER'] = '/home/wali/PycharmProjects/newsfeed/static/upload/thumbnail/'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize 
 db.init_app(app)
-
-
-
 
 def save_images(photo):
     hash_photo= secrets.token_urlsafe(20)
