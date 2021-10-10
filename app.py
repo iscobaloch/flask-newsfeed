@@ -1,10 +1,9 @@
 from flask import Flask, flash, render_template, request, session, redirect, url_for, current_app
 from werkzeug.utils import secure_filename
 from sqlalchemy.sql.expression import func, select
-
+import os
 from passlib.hash import pbkdf2_sha256
 from datetime import datetime
-import os
 import secrets
 from models import *
 
@@ -12,7 +11,7 @@ app = Flask(__name__)
 
 db = SQLAlchemy()
 app.config['WTF_CSRF_SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
-app.config["SQLALCHEMY_DATABASE_URI"]="postgresql://sxlbimfcblaxsg:933392f77dee46ead42e658021f71f55548b3094bf9199a1e8d4a4163eb96936@ec2-3-209-65-193.compute-1.amazonaws.com:5432/d5altodeq2cn5f"
+app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://admin:12345678@localhost:3306/newsfeed"
 app.config['SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
 app.config['UPLOAD_FOLDER'] = '/home/wali/PycharmProjects/newsfeed/static/upload/thumbnail/'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -562,4 +561,4 @@ def page_not_found(e):
 
 if __name__ == "__main__":
 
-    app.run()
+    app.run(debug=True)
