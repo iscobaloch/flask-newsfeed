@@ -5,13 +5,15 @@ import os
 from passlib.hash import pbkdf2_sha256
 from datetime import datetime
 import secrets
+import sqlite3
 from models import *
 
-app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
 
+app = Flask(__name__)
 db = SQLAlchemy()
 app.config['WTF_CSRF_SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
-app.config["SQLALCHEMY_DATABASE_URI"]= os.environ.get('DATABASE_URL')
+app.config["SQLALCHEMY_DATABASE_URI"]= 'sqlite:////' + os.path.join(basedir, 'newsfeed.db')
 app.config['SECRET_KEY'] = "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
 app.config['UPLOAD_FOLDER'] = '/home/wali/PycharmProjects/newsfeed/static/upload/thumbnail/'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
