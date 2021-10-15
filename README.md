@@ -8,7 +8,7 @@ Admin has all privilege where as moderator has certain restriction to access.
 
 # Quick links
 1. [Installation](#installation)
-2. [Clone this repository](#clone-this-repository)
+2. [Clone This Repository](#clone-this-repository)
 3. [Database](#database)
 4. [Screenshots](#screenshots)
 
