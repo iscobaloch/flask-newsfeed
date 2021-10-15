@@ -6,6 +6,12 @@ Admin has all privilege where as moderator has certain restriction to access.
 
 ## You can engage in this project to make this more advanced and you can add new features.You contribution will be highly appreciated !!
 
+# Quick links
+1. [Installation](#installation)
+2. [Clone this repository](#clone-this-repository)
+3. [Database](#database)
+4. [Screenshots](#screenshots)
+
 ## Installation
 This project needs the following libraries mentioned in requirements.txt, Make sure all libraries are installed before running the project
 
