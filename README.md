@@ -2,17 +2,42 @@
 
 This project is based on Flask framework.
 
-Admin has all privilege where as moderator has certain restriction to access.
-
 ## You can engage in this project to make this more advanced and you can add new features.You contribution will be highly appreciated !!
 
 # Quick links
-1. [Installation](#installation)
-2. [Clone This Repository](#clone-this-repository)
-3. [Database](#database)
-4. [Screenshots](#screenshots)
+1. [Modules](#modules)
+2. [Installation](#installation)
+3. [Clone This Repository](#clone-this-repository)
+4. [Database](#database)
+5. [Deployed Links](#deployed-links)
+6. [Screenshots](#screenshots)
 
-## Installation
+# Modules
+Admin has all privilege where as moderator has certain restriction to access.
+## Admin
+
+- Add/Edit Moderators
+- Delete Moderator
+- Add/Edit Posts
+- Delete Posts
+- Add/Edit Categories
+- Delete Category
+- Edit Information
+- Change Password
+
+## Moderator
+- Add Posts
+- View Posts
+- Change Password
+
+## Guest User
+
+- Visit Website
+- Read News 
+- Submit Feedback
+
+
+# Installation
 This project needs the following libraries mentioned in requirements.txt, Make sure all libraries are installed before running the project
 
 - Install requirements
@@ -20,7 +45,7 @@ This project needs the following libraries mentioned in requirements.txt, Make s
 $ pip install -r requirements.txt
 ```
 
-## Clone this repository
+# Clone this repository
 ```
 $ git clone https://github.com/iscobaloch/flask-newsfeed.git
 ```
@@ -34,6 +59,10 @@ $ source newsfeed.sql
 # Login credentials
 - *Admin login: admin*
 - *Password: admin*
+
+# Deployed Links:
+
+link: https://newsfeed.pythonanywhere.com
 
 # Screenshots
 ## Login page
@@ -56,6 +85,5 @@ $ source newsfeed.sql
 
 ## Category Wise News
 ![category news search](https://user-images.githubusercontent.com/91981782/136433484-00362422-ad53-4ffb-a8dc-c2799e8197df.png)
-
 
 
